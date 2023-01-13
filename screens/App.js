@@ -1,13 +1,96 @@
 import React from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  SectionList,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import communityImg from '../assets/community.png';
+import browseImg from '../assets/market-analysis.png';
+import accessoriesImg from '../assets/accressories.png';
+import trackerImg from '../assets/tracker.png';
+import resellerImg from '../assets/resaller.png';
+import serviceImg from '../assets/service.png';
+import registrationImg from '../assets/registration.png';
+import helpImg from '../assets/help.png';
+import shareByImg from '../assets/share-by.png';
+import mapImg from '../assets/map.png';
+import contactUsImg from '../assets/contact.png';
+import socialWorkImg from '../assets/network.png';
 // import Carousel from 'react-native-snap-carousel';
 
 const App = () => {
+  const quickLinksData = [
+    {
+      title: 'Community',
+      bg: '#16a34a3b',
+      imageUrl: communityImg,
+    },
+    {
+      title: 'Browse',
+      bg: '#3dbcbc3b',
+      imageUrl: browseImg,
+    },
+    {
+      title: 'Accessories',
+      bg: '#ca8a043b',
+      imageUrl: accessoriesImg,
+    },
+    {
+      title: 'Tracker',
+      bg: '#e11d483b',
+      imageUrl: trackerImg,
+    },
+    {
+      title: 'Reseller',
+      bg: '#d977063b',
+      imageUrl: resellerImg,
+    },
+    {
+      title: 'Services',
+      bg: '#c026d33b',
+      imageUrl: serviceImg,
+    },
+    {
+      title: 'Registration',
+      bg: '#4f46e53b',
+      imageUrl: registrationImg,
+    },
+    {
+      title: 'Help',
+      bg: '#db27773b',
+      imageUrl: helpImg,
+    },
+    {
+      title: 'Share By',
+      bg: '#c91e1e3b',
+      imageUrl: shareByImg,
+    },
+    {
+      title: 'Map',
+      bg: '#16a34a3b',
+      imageUrl: mapImg,
+    },
+    {
+      title: 'Contact Us',
+      bg: '#dc26263b',
+      imageUrl: contactUsImg,
+    },
+    {
+      title: 'Social Work',
+      bg: '#57534e3b',
+      imageUrl: socialWorkImg,
+    },
+  ];
   return (
-    <View>
+    <View className="flex-1">
       {/* home page header */}
       <View className="flex-row justify-between items-center px-5 mt-3">
-        <Text className="font-semibold text-xl text-green-300">
+        <Text className="font-semibold text-xl text-gray-700">
           Bike4Rider.com
         </Text>
         <View className="flex-row items-center space-x-3">
@@ -45,18 +128,33 @@ const App = () => {
       </View>
 
       {/* quick view */}
-      <View className="mx-3 mt-5 bg-indigo-700/80 py-2 rounded">
+      <View className="mx-3 mt-3 bg-indigo-700/80 py-2 rounded">
         <Text className="text-white font-bold text-center text-lg">
           Quick Link
         </Text>
       </View>
 
-      {/* <View>
-        <View>
-          <Image />
-          <Text>Community</Text>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+        <View className="flex-row flex-wrap flex-shrink mt-1 mx-3">
+          {quickLinksData.map((item, i) => (
+            <TouchableOpacity
+              key={item.title + i}
+              className=" basis-1/3 p-1 shadow-lg">
+              <View
+                style={{backgroundColor: `${item.bg}`}}
+                className={'p-1 rounded'}>
+                <Image
+                  className="w-16 h-16 object-contain mx-auto"
+                  source={item.imageUrl}
+                />
+                <Text className="text-base text-gray-800 text-center pt-1">
+                  {item.title}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          ))}
         </View>
-      </View> */}
+      </ScrollView>
     </View>
   );
 };
